@@ -1,0 +1,21 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@section scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@* ############   HTML HERE############## *@
+<form id="register" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <dynamic-form asp-model="Person"
+                  asp-submit-button-text="Create Person!"
+                  asp-submit-button-classes="btn-success">
+        <tweak asp-property="Person.BirthDate"
+               asp-label-classes="custom-label-class"
+               asp-input-path="~/Pages/Shared/EditorTemplates/DateTime.cshtml">
+        </tweak>
+    </dynamic-form>
+</form>
